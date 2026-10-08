@@ -1,0 +1,6 @@
+{
+  "name": "Online Shopping System",
+  "description": "A beginner-friendly academic project demonstrating HTML, CSS, JavaScript, Python Flask, SQLite CRUD, Docker, and Kubernetes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

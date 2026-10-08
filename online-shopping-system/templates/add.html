@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product - ONLINE SHOPPING SYSTEM</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container form-container">
+        <!-- Header -->
+        <header class="header">
+            <h1>ONLINE SHOPPING SYSTEM</h1>
+            <p class="subtitle">Add New Product</p>
+        </header>
+
+        <!-- Form Card -->
+        <div class="card">
+            <h2>Add Product</h2>
+            <form action="{{ url_for('add') }}" method="POST" id="productForm">
+                <div class="form-group">
+                    <label for="name">Product Name *</label>
+                    <input type="text" id="name" name="name" placeholder="e.g. Mechanical Keyboard" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category *</label>
+                    <input type="text" id="category" name="category" placeholder="e.g. Electronics, Accessories" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="price">Price ($) *</label>
+                        <input type="number" id="price" name="price" step="0.01" min="0" placeholder="e.g. 49.99" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quantity">Quantity *</label>
+                        <input type="number" id="quantity" name="quantity" min="0" placeholder="e.g. 20" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" rows="3" placeholder="Brief details about the product"></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Add Product</button>
+                    <a href="{{ url_for('index') }}" class="btn btn-secondary">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

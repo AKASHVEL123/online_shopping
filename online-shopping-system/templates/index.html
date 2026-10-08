@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONLINE SHOPPING SYSTEM</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>ONLINE SHOPPING SYSTEM</h1>
+            <p class="subtitle">Academic CRUD Project · Flask + SQLite</p>
+        </header>
+
+        <!-- Action Bar -->
+        <div class="action-bar">
+            <h2>Product Catalog</h2>
+            <a href="{{ url_for('add') }}" class="btn btn-primary">+ Add Product</a>
+        </div>
+
+        <!-- Products Table -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Product Name</th>
+                        <th>Category</th>
+                        <th>Price ($)</th>
+                        <th>Quantity</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if products %}
+                        {% for product in products %}
+                        <tr>
+                            <td>{{ product['id'] }}</td>
+                            <td class="font-bold">{{ product['name'] }}</td>
+                            <td><span class="category-tag">{{ product['category'] }}</span></td>
+                            <td>${{ "%.2f"|format(product['price']) }}</td>
+                            <td>{{ product['quantity'] }}</td>
+                            <td class="desc-cell">{{ product['description'] }}</td>
+                            <td class="actions">
+                                <a href="{{ url_for('edit', id=product['id']) }}" class="btn btn-edit">Edit</a>
+                                <a href="{{ url_for('delete', id=product['id']) }}" class="btn btn-delete" onclick="return confirmDelete('{{ product['name'] }}');">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="7" class="text-center">No products found. Click "Add Product" to create one.</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
